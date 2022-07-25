@@ -1,0 +1,19 @@
+<h3>Informativos</h3>
+<ng-container *ngIf="listEmpty; else informes">
+    <p class="mb-4">Não há informativos!</p>
+</ng-container>
+<ng-template #informes>
+    <ng-container *ngFor="let report of listReports; let i = index">
+        <p class="mb-4">
+            <strong>Informativo #{{i+1}}</strong> {{ report }}
+        </p>
+    </ng-container>
+</ng-template>
+
+<h3>Novo informe</h3>
+<form>
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Digite um novo informativo" #informe>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addReport(informe.value)">Adicionar</button>
+</form>
